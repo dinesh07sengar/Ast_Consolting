@@ -1,0 +1,47 @@
+export const data  =[{
+    img:"https://rb.gy/g3pgu"
+},
+{
+    img:"https://rb.gy/ukg5n"
+},
+{
+    img:"https://rb.gy/8zlcq"
+},
+{
+    img:"https://rb.gy/afm2o"
+},{
+    img:"https://rb.gy/i1huc"
+},
+{
+    img:"https://rb.gy/g3pgu"
+},
+{
+    img:"https://rb.gy/ukg5n"
+},
+{
+    img:"https://rb.gy/8zlcq"
+},
+{
+    img:"https://rb.gy/afm2o"
+},{
+    img:"https://rb.gy/i1huc"
+},
+{
+    img:"https://rb.gy/xk669"
+},
+{
+    img:"https://rb.gy/xmmyi"
+},
+{
+    img:"https://rb.gy/epohd"
+},{
+    img:"https://rb.gy/klqdx"
+},
+{
+    img:"https://rb.gy/hj8ad"
+},
+{
+    img:"https://rb.gy/kp74x"
+},
+
+]
