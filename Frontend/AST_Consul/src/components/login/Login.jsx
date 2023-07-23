@@ -15,11 +15,14 @@ import {
     Box,
     Text
 } from '@chakra-ui/react';
+import { useDispatch } from 'react-redux';
+import { Customthunk } from '../../redux/Action/Action';
 // import axios from "axios"
 
 export const Login = () => {
     const [state, setstate] = useState({ name: "", email: "", password: "" })
     const [create, setcreate] = useState(false)
+    let dispatch= useDispatch();
     const handlechange = (e) => {
         const { name, value } = e.target;
         setstate((prevData) => ({
@@ -31,6 +34,7 @@ export const Login = () => {
     const handlesubmit = (e) => {
         e.preventDefault();
         if(create){
+            dispatch(Customthunk("register",state))
             // axios.post("http://localhost:4800/user/register", state)
             // .then((d) => { console.log(d) })
             // .catch((err) => {
@@ -40,6 +44,8 @@ export const Login = () => {
         }
         else{
             const data={email:state.email,password:state.password}
+            dispatch(Customthunk("login",data))
+            
             // axios.post("http://localhost:4800/user/register", data)
             // .then((d) => { console.log(d) })
             // .catch((err) => {
@@ -47,11 +53,11 @@ export const Login = () => {
             // })
 
         }
-        console.log("yha hai")
+      
     }
     return (
-        <div>
-            <Stack minH="90vh" direction={{ base: 'column-reverse', md: 'row' }} >
+        <div style={{backgroundColor:"#F5F5F5",paddingTop:"20px"}}>
+            <Stack minH="88vh" direction={{ base: 'column-reverse', md: 'row' }} >
                 <Flex flex={1}>
                     <Image alt="Cover image" objectFit="cover" src="https://rb.gy/rp38q" />
                 </Flex>
@@ -92,7 +98,7 @@ export const Login = () => {
                                     <Checkbox colorScheme="green" size="md">
                                         Remember me
                                     </Checkbox>
-                                    <Link fontSize={{ base: 'md', sm: 'md' }} onClick={() => setcreate(!create)}>create account?</Link>
+                                    <Link fontSize={{ base: 'md', sm: 'md' }} onClick={() => setcreate(!create)}>{state?"click here to login":"create account?"}</Link>
                                 </Stack>
                                 <Button
                                     bg="green.300"

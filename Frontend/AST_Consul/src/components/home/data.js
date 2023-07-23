@@ -1,8 +1,10 @@
 export const data  =[{
+    name:"dinesh",
     img:"https://rb.gy/g3pgu"
 },
 {
-    img:"https://rb.gy/ukg5n"
+    img:"https://rb.gy/ukg5n",
+    name:"dinesh"
 },
 {
     img:"https://rb.gy/8zlcq"
@@ -13,7 +15,8 @@ export const data  =[{
     img:"https://rb.gy/i1huc"
 },
 {
-    img:"https://rb.gy/g3pgu"
+    img:"https://rb.gy/g3pgu",
+    name:"dinesh"
 },
 {
     img:"https://rb.gy/ukg5n"
