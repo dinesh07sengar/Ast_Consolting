@@ -37,7 +37,7 @@ User_route.post("/login",async(req,res)=>{
         let data = await Usermodel.findOne({ email, password })
         console.log("yha aya ree")
         if (data) {
-            const token = jwt.sign({email},process.env.SECRETE_KEY);
+            const token = jwt.sign({email},"dattebayo");
             res.status(200).send({ "msg": "succesfully login","user":data, token})
         }
         else {

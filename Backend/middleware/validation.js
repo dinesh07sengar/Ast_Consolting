@@ -6,7 +6,7 @@ const validation = (req,res,next)=>{
    
 
     if(token){
-        var decoded = jwt.verify(token, process.env.SECRETE_KEY);
+        var decoded = jwt.verify(token, "dattebayo");
         if(decoded){                                           
             let{email} = decoded;
             console.log(email)
