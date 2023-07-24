@@ -9,7 +9,7 @@ const router = express.Router();
 
 router.post('/images',validation, upload.single('image'), async (req, res) => {
     try {
-      const { imageName, caption,user } = req.body;
+      const { imageName, caption,name } = req.body;
       console.log(req.body)
       
       const image = {
@@ -19,6 +19,7 @@ router.post('/images',validation, upload.single('image'), async (req, res) => {
         imageType: req.file.mimetype,
         imageUrl: req.file.filename,
         caption,
+        name
       };
       // console.log(image)
       const newImage = await Imagemodel.create(image);

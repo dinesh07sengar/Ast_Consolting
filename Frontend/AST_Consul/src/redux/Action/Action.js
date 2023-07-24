@@ -5,7 +5,7 @@ import {POSTIMAGE_SUCCESSFULL,POSTIMAGE_FAIL,
 
 import axios from 'axios'
 
-const url="http://localhost:4800"
+const url="https://ast-gallery.onrender.com"
 
 
  export const AlbumId=(payload)=>{
@@ -106,7 +106,7 @@ export const Customthunk=(method,val)=>{
 
         const Postimage=(dispatch,data)=>{
             const token=localStorage.getItem("token")
-            axios.post('http://localhost:4800/img/images', data, {
+            axios.post('https://ast-gallery.onrender.com/img/images', data, {
             headers: {
                 "auth":token,
               'Content-Type': 'multipart/form-data', 

@@ -114,7 +114,7 @@ export const Home = () => {
                                     <Masonry gutter="5px">
                                         {state?.map((ele, i) => {
                                             return <Image key={i}
-                                                src={`http://localhost:4800/upload/${ele.imageUrl}`}
+                                                src={`https://ast-gallery.onrender.com/upload/${ele.imageUrl}`}
                                                 w={"100%"}
                                                 display={'block'}
                                                 onClick={() => handleclick(ele)}
