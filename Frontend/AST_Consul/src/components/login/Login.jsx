@@ -34,7 +34,9 @@ export const Login = () => {
     const handlesubmit = (e) => {
         e.preventDefault();
         if(create){
-            dispatch(Customthunk("register",state))
+            const data1={name:state.name,email:state.email,password:state.password}
+            dispatch(Customthunk("register",data1))
+            setstate({name:"",email:"",password:""})
             // axios.post("http://localhost:4800/user/register", state)
             // .then((d) => { console.log(d) })
             // .catch((err) => {
@@ -45,6 +47,7 @@ export const Login = () => {
         else{
             const data={email:state.email,password:state.password}
             dispatch(Customthunk("login",data))
+            setstate({name:"",email:"",password:""})
             
             // axios.post("http://localhost:4800/user/register", data)
             // .then((d) => { console.log(d) })
@@ -81,16 +84,16 @@ export const Login = () => {
                                 {create ?
                                     <FormControl id="name" >
                                         <FormLabel >Name</FormLabel>
-                                        <Input rounded="md" type="text" name='name' onChange={handlechange} />
+                                        <Input rounded="md" type="text" name='name' value={state.name} onChange={handlechange} />
                                     </FormControl>
                                     : null}
                                 <FormControl id="email" >
                                     <FormLabel >Email</FormLabel>
-                                    <Input rounded="md" type="email" name='email' onChange={handlechange} />
+                                    <Input rounded="md" type="email" name='email' value={state.email} onChange={handlechange} />
                                 </FormControl>
                                 <FormControl id="password">
                                     <FormLabel>Password</FormLabel>
-                                    <Input rounded="md" type="password" name='password' onChange={handlechange} />
+                                    <Input rounded="md" type="password" name='password' value={state.password} onChange={handlechange} />
                                 </FormControl>
                             </VStack>
                             <VStack w="100%">

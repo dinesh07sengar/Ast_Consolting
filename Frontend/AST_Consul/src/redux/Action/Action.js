@@ -5,6 +5,7 @@ import {POSTIMAGE_SUCCESSFULL,POSTIMAGE_FAIL,
 
 import axios from 'axios'
 
+
 const url="https://ast-gallery.onrender.com"
 
 
@@ -142,7 +143,7 @@ export const Customthunk=(method,val)=>{
             })
             .catch((er)=>{
                 console.log(er)
-                dispatch(d)
+               
 
             })
 
