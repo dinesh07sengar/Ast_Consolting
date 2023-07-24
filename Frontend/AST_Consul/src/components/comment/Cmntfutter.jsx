@@ -7,8 +7,9 @@ export const Cmntfutter = () => {
 
     const[cmnt, setcmnt]=useState(null)
     let dispatch = useDispatch()
-      const handleclick=()=>{
-        dispatch(Customthunk("CC",cmnt))
+    const handleclick=()=>{
+      let obj={cmnt}
+        dispatch(Customthunk("CC",obj))
   
       }
     return (

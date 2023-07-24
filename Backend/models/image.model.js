@@ -7,7 +7,9 @@ const imageSchema = mongoose.Schema({
     user:{ type: String, },
     imageType: { type: String, required: true },
     imageUrl: { type: String, require: true},
-    comments: [{user_name: String,cmnt: String, },],
+    comments: {type:Array},
+    name:{ type: String },
+    caption:{ type: String, },
     likes: { type: Number, default: 0 },
     album:{type:Array}
 

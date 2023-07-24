@@ -2,7 +2,8 @@ const jwt = require('jsonwebtoken');
 require('dotenv').config()
 const validation = (req,res,next)=>{
     const token = req.headers.auth
-    console.log("yha validation me aya");
+    console.log(token)
+   
 
     if(token){
         var decoded = jwt.verify(token, process.env.SECRETE_KEY);

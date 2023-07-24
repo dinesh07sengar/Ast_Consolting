@@ -8,7 +8,7 @@ import {POSTIMAGE_SUCCESSFULL,
  CREATEALBUM_FAIL,
  CREATEALBUM_SUCCESFULL,
  LOGIN_SUCCESS,
- GETALBUM_SUCCESSFUL,GETALBUM_Fail,
+ GETALBUM_SUCCESSFUL,GETALBUM_Fail,  ALBUMIdGET,
   } from "../Action/ActionType"
 import axios from 'axios'
 
@@ -18,6 +18,7 @@ const initial = {
     Album:[],
    Comment:[],
    isAuth:false,
+   Id:"",
    failure:true,
    success:false
 }
@@ -28,6 +29,11 @@ export const Blogreducer = (state = initial, action) => {
         case GETIMAGE_SUCCESSFULLY: {
             return {
                 ...state, Gallery: action.payload
+            }
+        }
+        case ALBUMIdGET:{
+            return{
+                ...state,Id:action.payload
             }
         }
         case LOGIN_SUCCESS: {

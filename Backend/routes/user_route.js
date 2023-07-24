@@ -1,6 +1,7 @@
 const express = require('express')
 const { Usermodel } = require('../models/user.model')
 const jwt = require('jsonwebtoken');
+const mongoose = require('mongoose');
 require('dotenv').config()
 
 const User_route= express.Router()

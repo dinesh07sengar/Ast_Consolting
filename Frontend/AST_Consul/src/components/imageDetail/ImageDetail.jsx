@@ -12,7 +12,8 @@ import {
 } from '@chakra-ui/react'
 import { Drower } from '../drower/Drower'
 import {useDispatch} from "react-redux"
-import { Customthunk } from '../../redux/Action/Action'
+import { AlbumId, Customthunk } from '../../redux/Action/Action'
+
 
 export const ImageDetail = ({ onClose1, isOpen1, detail }) => {
   const[state,setstate]=useState(true)
@@ -21,11 +22,13 @@ export const ImageDetail = ({ onClose1, isOpen1, detail }) => {
 
   const handleclick=()=>{
     setstate(false)
+    dispatch(AlbumId(detail._id))
     console.log("yha aya")
     onOpen()
   }
-  const handlealbum=(_id)=>{
-    dispatch(Customthunk("CA",_id))
+  const handlealbum=()=>{
+    console.log(detail._id)
+    dispatch(Customthunk("CA",detail._id))
 
   }
   console.log(state)
@@ -61,8 +64,8 @@ export const ImageDetail = ({ onClose1, isOpen1, detail }) => {
                   <BsThreeDotsVertical />
                 </MenuButton>
                 <MenuList>
-                <a href={detail.img} download ><MenuItem icon={<LiaDownloadSolid />}>Download</MenuItem></a>
-                  <MenuItem icon={<GrAdd />} onClick={(detail)=>{handlealbum(detail.id)}}>Add to album</MenuItem>
+                <a href={`http://localhost:4800/upload/${detail.imageUrl}`} download ><MenuItem icon={<LiaDownloadSolid />}>Download</MenuItem></a>
+                  <MenuItem icon={<GrAdd />} onClick={handlealbum}>Add to album</MenuItem>
 
                 </MenuList>
               </Menu>
@@ -77,7 +80,7 @@ export const ImageDetail = ({ onClose1, isOpen1, detail }) => {
 
           <ModalBody p={"0"}>
 
-            <Image src={detail.img} w={"100%"} />
+            <Image src={`http://localhost:4800/upload/${detail.imageUrl}`} w={"100%"} />
 
           </ModalBody>
 

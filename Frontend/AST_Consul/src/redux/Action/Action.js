@@ -1,11 +1,20 @@
 import {POSTIMAGE_SUCCESSFULL,POSTIMAGE_FAIL,
     GETIMAGE_SUCCESSFULLY,GETIMAGE_FAIL, COMMENTADD_SUCCESSFULLY, COMMENTADD_Fail, 
     CREATEALBUM_FAIL,REGISTER_SUCCESS,REGISTER_FAIL,CREATEALBUM_SUCCESFULL,
-    LOGIN_SUCCESS,GETALBUM_SUCCESSFUL,GETALBUM_Fail,LOGIN_FAIL} from "../Action/ActionType"
+    LOGIN_SUCCESS,GETALBUM_SUCCESSFUL,GETALBUM_Fail,LOGIN_FAIL, ALBUMIdGET} from "../Action/ActionType"
 
 import axios from 'axios'
 
 const url="http://localhost:4800"
+
+
+ export const AlbumId=(payload)=>{
+    return({
+        type:ALBUMIdGET,
+        payload
+    })
+
+}
 
 const Registeration_success=(payload)=>{
     return({
@@ -93,7 +102,7 @@ const GetGalley_fail=(payload)=>{
 
 
 export const Customthunk=(method,val)=>{
-    return (dispatch)=>{
+    return (dispatch,getState)=>{
 
         const Postimage=(dispatch,data)=>{
             const token=localStorage.getItem("token")
@@ -126,7 +135,7 @@ export const Customthunk=(method,val)=>{
         const Login=(dispatch,data)=>{
             axios.post(`${url}/user/login`,data)
             .then((d)=>{
-                console.log(d.data.user)
+                console.log(d)
                 dispatch(Login_succesfull(d.data.user))
                 localStorage.setItem("token",d.data.token)
 
@@ -138,8 +147,16 @@ export const Customthunk=(method,val)=>{
             })
 
         }
-        const Createalbum=(dispatch,data)=>{
-            axios.post(`${url}/user/register`,data)
+        const Createalbum=(dispatch,id)=>{
+            const token=localStorage.getItem("token")
+            console.log(token)
+            const headers = {
+                'Content-Type': 'application/json',
+                'auth': token
+              }
+            axios.post(`${url}/other/${id}`,{},{
+                headers: headers
+            })
             .then((d)=>{
                 console.log(d)
 
@@ -151,9 +168,15 @@ export const Customthunk=(method,val)=>{
 
         }
         const Getalbum=(dispatch)=>{
-            axios.get(`${url}/user/register`)
+            const token=localStorage.getItem("token")
+            axios.get(`${url}/other`,{
+                headers:{
+                    "auth":token
+                }
+            })
             .then((d)=>{
-                console.log(d)
+              
+                dispatch(Getalbum_succesfull(d.data.data));
 
             })
             .catch((er)=>{
@@ -166,17 +189,28 @@ export const Customthunk=(method,val)=>{
             console.log("aya yha")
             axios.get(`${url}/img`)
             .then((d)=>{
-                console.log(d)
+                console.log(d.data)
+                dispatch(GetGalley_success(d.data))
 
             })
             .catch((er)=>{
                 console.log(er)
+                dispatch(GetGalley_fail(er))
 
             })
 
         }
-        const Createcomment=(dispatch)=>{
-            axios.post(`${url}/user/register`,data)
+        const Createcomment=(dispatch,data)=>{
+            const id = getState().Id
+            console.log(data)
+            const token=localStorage.getItem("token")
+            const headers = {
+                'Content-Type': 'application/json',
+                'auth': token
+              }
+            axios.post(`${url}/other/comment/${id}`,data,{
+                headers:headers
+            })
             .then((d)=>{
                 console.log(d)
 
