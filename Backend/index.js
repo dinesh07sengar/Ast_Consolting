@@ -1,5 +1,6 @@
 const express = require('express')
 const cors = require('cors')
+require('dotenv').config()
 const { connect } = require('./config/db')
 const { router } = require('./routes/image_route')
 const { User_route } = require('./routes/user_route')
@@ -18,7 +19,7 @@ app.use("/img",router)
 app.use("/user",User_route)
 app.use("/other",album_router)
 
-app.listen(4800,async()=>{
+app.listen(process.env.PORT,async()=>{
     try {
         connect()
         console.log("your server is running at http://localhost:4800")
