@@ -64,7 +64,7 @@ export const ImageDetail = ({ onClose1, isOpen1, detail }) => {
                   <BsThreeDotsVertical />
                 </MenuButton>
                 <MenuList>
-                <a href={`http://localhost:4800/upload/${detail.imageUrl}`} download ><MenuItem icon={<LiaDownloadSolid />}>Download</MenuItem></a>
+                <a href={`https://ast-gallery.onrender.com/upload/${detail.imageUrl}`} download ><MenuItem icon={<LiaDownloadSolid />}>Download</MenuItem></a>
                   <MenuItem icon={<GrAdd />} onClick={handlealbum}>Add to album</MenuItem>
 
                 </MenuList>
@@ -80,7 +80,7 @@ export const ImageDetail = ({ onClose1, isOpen1, detail }) => {
 
           <ModalBody p={"0"}>
 
-            <Image src={`http://localhost:4800/upload/${detail.imageUrl}`} w={"100%"} />
+            <Image src={`https://ast-gallery.onrender.com/upload/${detail.imageUrl}`} w={"100%"} />
 
           </ModalBody>
 
